@@ -27,5 +27,13 @@ public class CraftNMSv1_12_2 implements CraftNMS {
 		craftItemStack.setTag(tag);
 		return CraftItemStack.asBukkitCopy(craftItemStack);
 	}
+
+	@Override
+	public boolean hasKey(ItemStack item, String key) {
+		net.minecraft.server.v1_12_R1.ItemStack craftItemStack = CraftItemStack.asNMSCopy(item);
+		NBTTagCompound tag = craftItemStack.getTag() == null ? new NBTTagCompound() : craftItemStack.getTag();
+		
+		return tag.hasKey(key);
+	}
 	
 }
