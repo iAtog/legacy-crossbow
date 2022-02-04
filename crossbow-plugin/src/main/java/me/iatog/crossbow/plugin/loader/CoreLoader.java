@@ -17,7 +17,10 @@ public class CoreLoader implements Loader {
 
 	@Override
 	public void onLoad() {
-		registerLoader(new ListenerLoader(main));
+		registerLoader(
+				new ListenerLoader(main),
+				new NMSLoader(main)
+				);
 
 		main.getLogger().info("�aLegacy Crossbow was enabled: " + main.getDescription().getVersion());
 	}
