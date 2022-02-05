@@ -36,5 +36,4 @@ public class LegacyCrossbowPlugin extends JavaPlugin {
 		
 		return craftNMS;
 	}
-
 }
