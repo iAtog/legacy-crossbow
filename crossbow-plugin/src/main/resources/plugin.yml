@@ -2,3 +2,7 @@ main: me.iatog.crossbow.plugin.LegacyCrossbowPlugin
 name: LegacyCrossbow
 version: ${project.version}
 description: Crossbow created for legacy servers
+
+commands:
+  legacycrossbow:
+    description: main command for LegacyCrossbow plugin

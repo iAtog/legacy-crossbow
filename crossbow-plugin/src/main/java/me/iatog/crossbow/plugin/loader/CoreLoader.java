@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.iatog.crossbow.plugin.LegacyCrossbowPlugin;
+import me.iatog.crossbow.plugin.command.CrossbowCommand;
 
 public class CoreLoader implements Loader {
 
@@ -21,14 +22,21 @@ public class CoreLoader implements Loader {
 				new ListenerLoader(main),
 				new NMSLoader(main)
 				);
-
-		main.getLogger().info("�aLegacy Crossbow was enabled: " + main.getDescription().getVersion());
+		
+		main.getCommand("legacycrossbow").setExecutor(new CrossbowCommand());
+		
+		main.getLogger().info("§aLegacy Crossbow was enabled: " + main.getDescription().getVersion());
 	}
 
 	@Override
 	public void onUnload() {
 		main.getLogger().info("I say hello to her and she says gusbai");
-		loaders.forEach(loader -> loader.onUnload());
+		loaders.forEach(this::unload);
+	}
+	
+	private void unload(Loader loader) {
+		loader.onUnload();
+		loaders.remove(loader);
 	}
 
 	private void registerLoader(Loader... loaders) {
