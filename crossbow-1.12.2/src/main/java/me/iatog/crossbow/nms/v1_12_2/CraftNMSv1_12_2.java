@@ -35,5 +35,21 @@ public class CraftNMSv1_12_2 implements CraftNMS {
 		
 		return tag.hasKey(key);
 	}
+
+	@Override
+	public String getString(ItemStack item, String key) {
+		net.minecraft.server.v1_12_R1.ItemStack craftItemStack = CraftItemStack.asNMSCopy(item);
+		NBTTagCompound tag = craftItemStack.getTag() == null ? new NBTTagCompound() : craftItemStack.getTag();
+		
+		return tag.getString(key);
+	}
+
+	@Override
+	public boolean getBoolean(ItemStack item, String key) {
+		net.minecraft.server.v1_12_R1.ItemStack craftItemStack = CraftItemStack.asNMSCopy(item);
+		NBTTagCompound tag = craftItemStack.getTag() == null ? new NBTTagCompound() : craftItemStack.getTag();
+		
+		return tag.getBoolean(key);
+	}
 	
 }
